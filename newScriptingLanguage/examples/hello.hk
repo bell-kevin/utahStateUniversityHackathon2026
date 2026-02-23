@@ -1,0 +1,3 @@
+print "Welcome to HackScript!";
+let school = "USU";
+print "HackUSU @ " + school;
