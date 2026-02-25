@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SmartAsset | Autonomous Asset Intelligence</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <p class="eyebrow">Hack USU · Startup Track Concept</p>
+      <h1>SmartAsset Intelligence System</h1>
+      <p class="subtitle">
+        AI + computer vision workflow to classify assets, monitor condition, and surface maintenance risk
+        before failures become expensive.
+      </p>
+    </header>
+
+    <main class="layout">
+      <section class="card">
+        <h2>Asset Intake</h2>
+        <p>Enter an asset and run a simulated CV scan to classify condition and risk.</p>
+        <form id="asset-form">
+          <label>
+            Asset Name
+            <input name="name" required placeholder="Pump 14A" />
+          </label>
+          <label>
+            Asset Category
+            <select name="category" required>
+              <option value="">Select</option>
+              <option>Pipeline</option>
+              <option>Pump</option>
+              <option>Valve</option>
+              <option>Compressor</option>
+              <option>Storage Tank</option>
+            </select>
+          </label>
+          <label>
+            Operating Environment
+            <select name="environment" required>
+              <option value="">Select</option>
+              <option>Dry Indoor</option>
+              <option>Outdoor - Mild</option>
+              <option>Outdoor - Marine</option>
+              <option>Chemical Exposure</option>
+              <option>High Humidity</option>
+            </select>
+          </label>
+          <label>
+            Hours Since Last Service
+            <input type="number" min="0" name="serviceHours" required placeholder="500" />
+          </label>
+          <button type="submit">Run Smart Scan</button>
+        </form>
+      </section>
+
+      <section class="card" id="scan-result" aria-live="polite">
+        <h2>Scan Result</h2>
+        <p class="empty">No scan yet. Submit an asset to generate a risk profile.</p>
+      </section>
+    </main>
+
+    <section class="card table-wrap">
+      <h2>Asset Register</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Asset</th>
+            <th>Category</th>
+            <th>Condition</th>
+            <th>Risk Score</th>
+            <th>Priority</th>
+            <th>Recommendation</th>
+          </tr>
+        </thead>
+        <tbody id="asset-table-body"></tbody>
+      </table>
+    </section>
+
+    <template id="result-template">
+      <div class="result-grid">
+        <div>
+          <p class="label">Detected Condition</p>
+          <p class="value" data-field="condition"></p>
+        </div>
+        <div>
+          <p class="label">Risk Score</p>
+          <p class="value" data-field="riskScore"></p>
+        </div>
+        <div>
+          <p class="label">Failure Probability (30d)</p>
+          <p class="value" data-field="failureProbability"></p>
+        </div>
+        <div>
+          <p class="label">Priority</p>
+          <p class="value" data-field="priority"></p>
+        </div>
+      </div>
+      <p class="recommendation" data-field="recommendation"></p>
+    </template>
+
+    <script src="app.js"></script>
+  </body>
+</html>
