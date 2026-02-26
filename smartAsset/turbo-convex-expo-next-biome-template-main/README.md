@@ -1,55 +1,49 @@
-# Expo + Next + Convex Turborepo Template
+# Smart Asset Intelligence (Hack USU Startup Track MVP)
 
-## Stack
-- pnpm + Turborepo
-- Expo (Expo Router) mobile app
-- Next.js web app
-- Convex backend
-- Biome formatter/linter
-- TypeScript everywhere
+This folder now contains a full hackathon-ready prototype for an **AI-enhanced CMMS layer** focused on NFC-tagged assets.
 
-## Prerequisites
-- Node.js 18+ (corepack recommended)
-- VS Code (Biome extension) or your preferred editor
+## What it demonstrates
+- NFC-style asset selection (simulated in web UI)
+- Role-based action menu (`student`, `maintenance`, `supervisor`)
+- AI inspection scoring from notes (keywords -> findings -> priority/actions)
+- Structured AI payload in the format requested
+- Convex-ready backend schema for assets, scans, inspections, users, and work orders
+- Risk updates and work-order generation via backend mutations
 
-## Getting Started
-1. Rename the template (see section below)
-2. Copy envs
-   ```bash
-   cp .env.example .env.local
-   ```
-   A postinstall script symlinks `.env.local` into each app/package.
-3. Enable corepack and install dependencies
-   ```bash
-   corepack enable
-   pnpm install
-   ```
-4. Set up convex
-   ```
-   pnpm dev:convex
-   ```
-5. Run dev servers
-   ```bash
-   pnpm dev
-   ```
+## Project structure
+- `apps/web`: Next.js dashboard/prototype and API route for AI inspection evaluation
+- `backend/convex`: Convex schema + mutations/queries for asset operations
+- `apps/expo`: Existing Expo shell retained for mobile expansion
 
-## Rename the template
-Update the package scope and Expo app name in one command (works on Windows/macOS/Linux):
+## Key workflow
+1. User scans NFC tag (simulated by selecting an asset).
+2. User chooses an action from role-based options.
+3. User submits notes (and optionally photo URL in backend flow).
+4. AI layer evaluates notes and returns:
+   - `summary`
+   - `overall_priority`
+   - `findings[]`
+   - `actions[]`
+5. Backend mutation can merge new risk into asset score and auto-create work orders.
+
+## Run locally
 ```bash
-pnpm rename myscope "My App Name"
-pnpm install # refresh lockfile after renaming
+corepack enable
+pnpm install
+pnpm dev:web
 ```
-This replaces all `@template/*` packages with `@myscope/*` and updates `apps/expo/app.json` name/slug/scheme.
 
-## Convex note
-The Convex backend ships with stubbed generated files so typecheck passes out of the box. When you’re ready to use Convex, run:
+Then open `http://localhost:3000`.
+
+## Validation commands
 ```bash
-pnpm --filter @template/convex convex codegen
+pnpm --filter @template/web test
+pnpm --filter @template/web typecheck
+pnpm --filter @template/web lint
+pnpm --filter @template/backend typecheck
+pnpm --filter @template/web build
 ```
-then start the Convex dev server with `pnpm dev:convex`.
 
-## Useful scripts
-- `pnpm dev:expo`
-- `pnpm dev:web`
-- `pnpm dev:convex`
-- `pnpm lint` | `pnpm format` | `pnpm typecheck` | `pnpm build` | `pnpm test`
+## Notes
+- The AI module currently uses deterministic heuristics for fast hackathon prototyping.
+- Swap in an LLM or vision model by replacing `evaluateInspection` and/or Convex action logic.
