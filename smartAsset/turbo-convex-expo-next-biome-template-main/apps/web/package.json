@@ -7,7 +7,11 @@
     "build": "next build",
     "dev": "next dev",
     "postinstall": "node ../../scripts/symlink-env.js",
-    "start": "next start"
+    "start": "next start",
+    "lint": "biome lint . --write",
+    "format": "biome check . --linter-enabled=false --fix",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
   },
   "dependencies": {
     "@template/backend": "workspace:*",
@@ -23,6 +27,7 @@
     "@types/react-dom": "^19.2.3",
     "babel-plugin-react-compiler": "1.0.0",
     "tailwindcss": "^4",
-    "typescript": "~5.9.3"
+    "typescript": "~5.9.3",
+    "vitest": "^2.1.8"
   }
 }
