@@ -1,0 +1,25 @@
+{
+  "name": "monorepo-template",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "turbo run dev --parallel",
+    "dev:expo": "pnpm --filter @template/expo dev",
+    "dev:web": "pnpm --filter @template/web dev",
+    "dev:backend": "pnpm --filter @template/backend dev",
+    "lint": "turbo run lint",
+    "format": "turbo run format",
+    "typecheck": "turbo run typecheck",
+    "build": "turbo run build",
+    "test": "turbo run test",
+    "clean": "git clean -xdf node_modules .turbo dist .expo .next .cache",
+    "rename": "node scripts/rename-template.js"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.3.0",
+    "ultracite": "6.0.1",
+    "turbo": "^2.5.5",
+    "typescript": "~5.9.3"
+  },
+  "packageManager": "pnpm@10.22.0"
+}

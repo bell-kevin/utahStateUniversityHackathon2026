@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": "./base.json",
+  "compilerOptions": {
+    "declaration": true,
+    "declarationMap": true,
+    "emitDeclarationOnly": true,
+    "noEmit": false,
+    "outDir": "${configDir}/dist",
+    "lib": ["ES2023", "dom", "dom.iterable"],
+    "jsx": "preserve"
+  }
+}

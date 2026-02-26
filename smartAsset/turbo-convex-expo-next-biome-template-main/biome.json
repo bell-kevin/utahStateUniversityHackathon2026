@@ -1,0 +1,144 @@
+{
+  "$schema": "https://biomejs.dev/schemas/2.3.0/schema.json",
+  "extends": ["ultracite"],
+  "files": {
+    "includes": [
+      "**",
+      "!**/.turbo",
+      "!**/node_modules",
+      "!**/.turbo",
+      "!**/.next",
+      "!**/dist",
+      "!**/build",
+      "!packages/python-*",
+      "!.specs",
+      "!**/convex/_generated",
+      "!pnpm-lock.yaml"
+    ]
+  },
+  "formatter": {
+    "enabled": true,
+    "formatWithErrors": true,
+    "indentStyle": "space",
+    "indentWidth": 2,
+    "lineEnding": "lf",
+    "lineWidth": 80,
+    "attributePosition": "auto"
+  },
+  "assist": {
+    "actions": {
+      "source": {
+        "organizeImports": {
+          "level": "on",
+          "options": {
+            "groups": [
+              ":URL:",
+              ":PACKAGE_WITH_PROTOCOL:",
+              ["@*/**", "!@bb/**"],
+              [":PACKAGE:", "!@bb/**"],
+              ["!@*/**", "!@bb/**"],
+              ":BLANK_LINE:",
+              "@bb/**",
+              ":BLANK_LINE:",
+              ":ALIAS:",
+              ":BLANK_LINE:",
+              ":PATH:"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "linter": {
+    "includes": ["**", "!**/packages/ui/src/**", "!**/*.spec.ts"],
+    "rules": {
+      "recommended": true,
+      "complexity": {
+        "noBannedTypes": "off",
+        "noCommaOperator": "off",
+        "noExcessiveCognitiveComplexity": {
+          "level": "error",
+          "options": {
+            "maxAllowedComplexity": 30
+          }
+        },
+        "noImportantStyles": "off",
+        "noStaticOnlyClass": "off"
+      },
+      "correctness": {
+        "useExhaustiveDependencies": "warn",
+        "noUnusedImports": {
+          "level": "warn",
+          "fix": "safe"
+        },
+        "noNodejsModules": "off",
+        "noEmptyPattern": "off",
+        "noNestedComponentDefinitions": "off"
+      },
+      "suspicious": {
+        "noExplicitAny": "off",
+        "noShadowRestrictedNames": "off",
+        "noEmptyInterface": "off",
+        "noRedeclare": "off",
+        "noAssignInExpressions": "off",
+        "useAwait": "off",
+        "noEmptyBlockStatements": "off",
+        "noDuplicateProperties": "warn",
+        "noUnknownAtRules": "off"
+      },
+      "a11y": {
+        "noSvgWithoutTitle": "off",
+        "useButtonType": "off",
+        "useSemanticElements": "off"
+      },
+      "style": {
+        "useNamingConvention": "off",
+        "useFilenamingConvention": "off",
+        "useBlockStatements": "off",
+        "noParameterProperties": "off",
+        "noParameterAssign": "error",
+        "useAsConstAssertion": "error",
+        "useDefaultParameterLast": "error",
+        "useEnumInitializers": "error",
+        "useSelfClosingElements": "error",
+        "useSingleVarDeclarator": "error",
+        "noUnusedTemplateLiteral": "error",
+        "useNumberNamespace": "error",
+        "noInferrableTypes": "error",
+        "noUselessElse": "error",
+        "noExportedImports": "off",
+        "noDescendingSpecificity": "off",
+        "useConsistentCurlyBraces": "off",
+        "noNestedTernary": "off",
+        "noRestrictedImports": {
+          "level": "error",
+          "options": {
+            "paths": {
+              "framer-motion": "Please use motion or motion/react instead",
+              "vitest": "Please use @bb/vitest instead",
+              "zod": "Please use zod/v4 instead"
+            }
+          }
+        }
+      },
+      "performance": {
+        "noBarrelFile": "off",
+        "noReExportAll": "off",
+        "noNamespaceImport": "off"
+      },
+      "nursery": {
+        "useSortedClasses": "off",
+        "noShadow": "off"
+      },
+      "security": {
+        "noSecrets": "off"
+      }
+    }
+  },
+  "javascript": {
+    "globals": ["React"],
+    "parser": {
+      "unsafeParameterDecoratorsEnabled": true
+    }
+  }
+}

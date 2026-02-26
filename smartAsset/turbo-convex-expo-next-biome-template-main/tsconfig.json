@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "jsx": "react-jsx",
+    "strict": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@backend/*": ["backend/*"],
+      "@shared/*": ["packages/*"],
+      "@web/*": ["apps/web/*"],
+      "@expo/*": ["apps/expo/*"]
+    }
+  }
+}
